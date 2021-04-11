@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "name": "cfworkers-security-headers",
+  "version": "1.0.0",
+  "description": "A Cloudflare Workers project which adds sensible security header rewrites",
+  "main": "index.js",
+  "author": "anthonygrimes <81484235+anthonygrimes@users.noreply.github.com>",
+  "license": "MIT"
+}
