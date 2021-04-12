@@ -17,33 +17,20 @@ addEventListener('fetch', event => {
 })
 
 async function handleRequest(request) {
-  const response = await fetchResponse(request)
+  const response = await fetch(request)
   const responseHeaders = new Headers(response.headers)
 
-  amendResponseHeaders(responseHeaders)
+  Object.keys(securityHeaders).forEach(
+      header => responseHeaders.set(header, securityHeaders[header])
+  )
+
+  vulnHeaders.forEach(
+      header => responseHeaders.delete(header)
+  )
 
   return new Response(response.body, {
     status: response.status,
     statusText: response.statusText,
     headers: responseHeaders
   })
-}
-
-async function fetchResponse(request) {
-  return await fetch(request)
-}
-
-function amendResponseHeaders(responseHeaders) {
-  addHeaders(responseHeaders)
-  removeHeaders(responseHeaders)
-}
-
-function addHeaders(responseHeaders) {
-  Object.keys(securityHeaders).forEach(
-      header => responseHeaders.set(header, securityHeaders[header])
-  )
-}
-
-function removeHeaders(responseHeaders) {
-  vulnHeaders.forEach(header => responseHeaders.delete(header))
 }
