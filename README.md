@@ -1,6 +1,6 @@
 # cfworkers-security-headers
 
-A [Cloudflare Workers](https://workers.cloudflare.com/) project which adds sensible security header rewrites.
+A [Cloudflare Workers](https://workers.cloudflare.com/) project which adds sensible security header rewrites
 
 ## getting started
 
